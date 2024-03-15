@@ -162,7 +162,7 @@ const Main = () => {
                 drawerStyle={{ backgroundColor: '#CEC8FF' }}
             >
                 <Drawer.Screen
-                    name='Home'
+                    name='HomE'
                     component={HomeNavigator}
                     options={{
                         title: 'Home',
