@@ -15,6 +15,7 @@ import { fetchCampsites } from '../features/campsites/campsiteSlice';
 import { fetchComments } from '../features/comments/commentsSlice';
 import { fetchPartners } from '../features/partners/partnersSlice';
 import { fetchPromotions } from '../features/promotions/promotionsSlice';
+import ReservationScreen from './ReservationScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -90,6 +91,30 @@ const ContactNavigator = () => {
         </Stack.Navigator>
     );
 };
+
+const ReservationNavigator = () => {
+    const Stack = createStackNavigator();
+    return (
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen
+                name='Reservation'
+                component={ReservationScreen}
+                options={({ navigation }) => ({
+                    title: 'Reservation Search',
+                    headerLeft: () => (
+                        <Icon
+                            name='tree'
+                            type='font-awesome'
+                            iconStyle={styles.stackIcon}
+                            onPress={() => navigation.toggleDrawer()}
+                        />
+                    )
+                })}
+            />
+        </Stack.Navigator>
+    );
+};
+
 
 const DirectoryNavigator = () => {
     const Stack = createStackNavigator();
@@ -177,14 +202,15 @@ const Main = () => {
                         )
                     }}
                 />
+                
                 <Drawer.Screen
-                    name='Directory'
-                    component={DirectoryNavigator}
+                    name='ReserveCampsite'
+                    component={ReservationNavigator}
                     options={{
-                        title: 'Campsite Directory',
+                        title: 'Reserve Campsite',
                         drawerIcon: ({ color }) => (
                             <Icon
-                                name='list'
+                                name='tree'
                                 type='font-awesome'
                                 size={24}
                                 iconStyle={{ width: 24 }}
@@ -193,6 +219,7 @@ const Main = () => {
                         )
                     }}
                 />
+
                 <Drawer.Screen
                     name='About'
                     component={AboutNavigator}
