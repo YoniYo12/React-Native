@@ -275,7 +275,7 @@ const Main = () => {
                 />
 
                 <Drawer.Screen
-                    name='About'
+                    name='AbouT'
                     component={AboutNavigator}
                     options={{
                         title: 'About',
@@ -291,7 +291,7 @@ const Main = () => {
                     }}
                 />
                 <Drawer.Screen
-                    name='Contact'
+                    name='ContacT'
                     component={ContactNavigator}
                     options={{
                         title: 'Contact Us',
