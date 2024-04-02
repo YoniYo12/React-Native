@@ -18,6 +18,7 @@ import { fetchPromotions } from '../features/promotions/promotionsSlice';
 import ReservationScreen from './ReservationScreen';
 import FavoriteScreen from './FavoriteScreen';
 import LoginScreen from './LoginScreen';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator();
 
@@ -56,22 +57,24 @@ const LoginNavigator = () => {
             <Stack.Screen
                 name='LogiN'
                 component={LoginScreen}
-                options={({ navigation }) => ({
-                    title: 'Home',
+                options={({ navigation, route }) => ({
                     headerLeft: () => (
                         <Icon
-                            name='sign-in'
+                            name={
+                                getFocusedRouteNameFromRoute(route) === 
+                                'register' ? 'user-plus' : 'sign-in'
+                            }
                             type='font-awesome'
                             iconStyle={styles.stackIcon}
                             onPress={() => navigation.toggleDrawer()}
                         />
-                    )
+                    ),
+                    headerTitle: getFocusedRouteNameFromRoute(route)
                 })}
             />
         </Stack.Navigator>
     );
 };
-
 const AboutNavigator = () => {
     const Stack = createStackNavigator();
     return (
