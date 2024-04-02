@@ -23,9 +23,10 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 const Drawer = createDrawerNavigator();
 
 const screenOptions = {
-    headerTintColor: '#fff',
-    headerStyle: { backgroundColor: '#5637DD' }
-};
+        headerTintColor: '#fff',
+        headerStyle: { backgroundColor: '#5637DD' },
+}
+
 
 const HomeNavigator = () => {
     const Stack = createStackNavigator();
@@ -55,26 +56,29 @@ const LoginNavigator = () => {
     return (
         <Stack.Navigator screenOptions={screenOptions}>
             <Stack.Screen
-                name='LogiN'
+                name='login'
                 component={LoginScreen}
                 options={({ navigation, route }) => ({
+                    headerTitle: getFocusedRouteNameFromRoute(route),
                     headerLeft: () => (
                         <Icon
                             name={
-                                getFocusedRouteNameFromRoute(route) === 
-                                'register' ? 'user-plus' : 'sign-in'
+                                getFocusedRouteNameFromRoute(route) ===
+                                'Register'
+                                    ? 'user-plus'
+                                    : 'sign-in'
                             }
                             type='font-awesome'
                             iconStyle={styles.stackIcon}
                             onPress={() => navigation.toggleDrawer()}
                         />
-                    ),
-                    headerTitle: getFocusedRouteNameFromRoute(route)
+                    )
                 })}
             />
         </Stack.Navigator>
     );
 };
+
 const AboutNavigator = () => {
     const Stack = createStackNavigator();
     return (
